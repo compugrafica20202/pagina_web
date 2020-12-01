@@ -2,3 +2,4 @@
 *.txt
 /.vscode
 /client/node_modules
+.eslintcache

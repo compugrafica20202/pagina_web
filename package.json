@@ -1,0 +1,32 @@
+{
+  "name": "pagina_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
+    "client": "cd client && npm start",
+    "client-build": "cd client && npm run build",
+    "server": "nodemon server/app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compugrafica20202/pagina_web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/compugrafica20202/pagina_web/issues"
+  },
+  "homepage": "https://github.com/compugrafica20202/pagina_web#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}

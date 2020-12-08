@@ -1,42 +1,56 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Field } from 'formik'
+import { TextField, MenuItem, InputLabel, FormControl, Grid, Select } from '@material-ui/core'
 
-export class FormularioInvernadero extends Component {
-
-    handleChange = (event) => {
-        console.log(event.target.id);
-        this.props.handleInfoChange(event.target.name, event.target.value);
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="form-group">
-                    <label>Tipo de invernadero</label>
-                    <select className="form-control" defaultValue="Tipo 1">
-                        <option>Tipo 1</option>
-                        <option>Tipo 2</option>
-                    </select>
-                </div>
-                <div className="form-row justify-content-center">
-                    <div className="col">
-                        <label>Altura</label>
-                        <input className="form-control" name="altura" onBlur={this.handleChange}></input>
-                        <small className="form-text text-muted">Altura del invernadero en centímetros (cms)</small>
-                    </div>
-                    <div className="col">
-                        <label>Ancho</label>
-                        <input className="form-control" name="ancho" onBlur={this.handleChange}></input>
-                        <small className="form-text text-muted">Ancho del invernadero en centímetros (cms)</small>
-                    </div>
-                    <div className="col">
-                        <label>Profundidad</label>
-                        <input className="form-control" name="profundidad" onBlur={this.handleChange}></input>
-                        <small className="form-text text-muted">Produndidad del invernadero en centímetros (cms)</small>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+export default function FormularioInvernadero(props) {
+    
+    return(
+        <>
+            <Grid item>
+                <FormControl fullWidth variant="outlined">
+                    <InputLabel>Tipo de invernadero</InputLabel>
+                    <Field name="tipo_invernadero" type="select" as={Select} 
+                        label="Tipo de invernadero"
+                        error={props.formik.errors.tipo_invernadero && true}
+                        margin="dense"
+                    > 
+                        <MenuItem value={false}>Tipo 1</MenuItem>
+                        <MenuItem value={true}>Tipo 2</MenuItem>
+                    </Field>
+                </FormControl>
+            </Grid>
+            <Grid item container spacing={2}>
+                <Grid item xs={12} sm={4}>
+                    <Field 
+                        id="altura" name="altura" type="text" as={TextField} variant="outlined"
+                        label="Altura"
+                        helperText={props.formik.errors.altura ? props.formik.errors.altura : "Altura en centímetros (cms)"}
+                        error={props.formik.errors.altura && true}
+                        fullWidth
+                        margin="dense"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <Field 
+                        id="ancho" name="ancho" type="text" as={TextField} variant="outlined"
+                        label="Ancho"
+                        helperText="Ancho en centímetros (cms)"
+                        error={props.formik.errors.ancho && true}
+                        fullWidth
+                        margin="dense"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <Field 
+                        id="profundidad" name="profundidad" type="text" as={TextField} variant="outlined"
+                        label="Profundidad"
+                        helperText="Profundidad en centímetros (cms)"
+                        error={props.formik.errors.profundidad && true}
+                        fullWidth
+                        margin="dense"
+                    />
+                </Grid>
+            </Grid>
+        </>
+    )
 }
-
-export default FormularioInvernadero

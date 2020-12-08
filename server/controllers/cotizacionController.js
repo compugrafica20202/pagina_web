@@ -15,8 +15,9 @@ exports.crearCotizacion = (req, res) => {
         if (error) return console.log(error);
         console.log(cotizacion);
     });
+    
     */
-
+    
     Cotizaciones.find((error, cotizacion) => {
         if (error) return console.log(error);
         console.log(cotizacion);

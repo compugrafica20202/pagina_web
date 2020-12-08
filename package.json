@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
+    "install-all": "npm install && cd client && npm install",
     "client": "cd client && npm start",
     "client-build": "cd client && npm run build",
     "server": "nodemon server/app.js",

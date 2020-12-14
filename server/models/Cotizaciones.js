@@ -20,7 +20,7 @@ const cotizacionSchema = new mongoose.Schema({
     cantidad_aves: {type: Number, default: 0},
     lineas_enfrentadas: {type: Boolean, default: false},
     // Procesamiento
-    ha_sido_revisado: {type: Boolean, default: true}
+    ha_sido_revisado: {type: Boolean, default: false}
 }, {versionKey: false});
 
 module.exports = mongoose.model("Cotizaciones", cotizacionSchema);

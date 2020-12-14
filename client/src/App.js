@@ -1,23 +1,22 @@
-import { Grid, Typography } from '@material-ui/core';
-import React, { Component } from 'react'
-import FormularioCotizacion from './components/cotizacion/FormularioCotizacion';
+import { LinearProgress } from "@material-ui/core";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 
+const Cotizacion = lazy(() => import("./routes/Cotizacion"));
 
-export class App extends Component {
-    render() {
-        return (
-            <div>
-                <Typography variant="h4" align="center">Prototipo de formulario de cotizaciones</Typography>
-                <br/>
-                <Grid container justify="center">
-                    <Grid item xs={11} sm={9} lg={7}>
-                      <FormularioCotizacion/>
-                    </Grid>
-                </Grid>
-            </div>
-        )
-    }
-}
+export const App = () => {
+  return (
+    <Router>
+      <Suspense fallback={<LinearProgress />}>
+        <Navbar />
+        <br />
+        <Switch>
+          <Route exact path="/cotizacion" component={Cotizacion} />
+        </Switch>
+      </Suspense>
+    </Router>
+  );
+};
 
-export default App
-
+export default App;

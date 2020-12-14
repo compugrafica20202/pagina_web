@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 // Routes
 const cotizacionRouter = require("./routes/cotizacion");
 const clienteRouter = require("./routes/cliente")
+const consultaRouter = require("./routes/consulta")
 
 // Base de datos
 const mongoDB_url = "mongodb+srv://graphcompuser:graphcomppass@cluster0.yvnfe.mongodb.net/graphcompprojdb?retryWrites=true&w=majority";
@@ -18,6 +19,7 @@ const app = express();
 app.use(express.json());
 app.use("/cotizacion", cotizacionRouter);
 app.use("/cliente", clienteRouter);
+app.use("/consulta", consultaRouter);
 
 /*
 app.get("/", (req, res) => {

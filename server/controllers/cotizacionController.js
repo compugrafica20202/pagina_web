@@ -44,24 +44,32 @@ exports.crearCotizacion = async (req, res) => {
             message: "Solicitud rechazada",
           });
         }
-        // Si se pudieron encontrar, coja el ultimo correo que uso que fue el que se le pregunto queria usar
-        req.body.correo = cotizaciones[cotizaciones.length - 1].correo;
+        // Si se pudieron encontrar, intente coger el ultimo correo que uso que fue el que se le pregunto queria usar
+        try {
+          req.body.correo = cotizaciones[cotizaciones.length - 1].correo;
+        } catch (err) {
+          // Si no llega a existir una cotizacion en la base de datos como se esperaria hay que devolver un error y terminar
+          return res.status(400).send({
+            message: "Solicitud rechazada",
+          });
+        }
       }
     );
   }
 
   // Crea una cotizacion con la informacion que llego y que ha sido filtrada
-  const cotizacion = new Cotizaciones({ ...req.body }); 
+  const cotizacion = new Cotizaciones({ ...req.body });
 
   // Guarde la cotizacion en la base de datos
-  cotizacion.save((error) => { 
+  cotizacion.save((error) => {
     if (error) {
-      res.status(400).send({ // Si hubo un error guardando en la base de datos haga al cliente saberlo
+      res.status(400).send({
+        // Si hubo un error guardando en la base de datos haga al cliente saberlo
         message: "Solicitud rechazada",
       });
-      return console.log(error);  // Si hay un error muestrelo en la consola del servidor
+      return console.log(error); // Si hay un error muestrelo en la consola del servidor
     }
     // Si se guardo exitosamente muestrelo en consola del servidor
-    console.log(`Cotización recibida. CC/NIT: ${req.body.cc_o_nit}`);  
+    console.log(`Cotización recibida. CC/NIT: ${req.body.cc_o_nit}`);
   });
 };

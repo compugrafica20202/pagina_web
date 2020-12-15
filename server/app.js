@@ -16,7 +16,8 @@ db.on("error", console.error.bind(console, "Error conectandose a la base de dato
 mongoose.connect(mongoDB_url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Routes
-// Son las rutas que van a existir. Ten en cuenta que dentro de "require" esta la ruta al archivo.js que define lo que pasa en esta ruta
+// Son las rutas que van a existir. Ten en cuenta que dentro de "require" esta la ruta al archivo.js 
+// del que se importa
 const cotizacionRouter = require("./routes/cotizacion");  // http://localhost:9000/cotizacion
 const clienteRouter = require("./routes/cliente")  // http://localhost:9000/cliente
 const consultaRouter = require("./routes/consulta")  // http://localhost:9000/consulta

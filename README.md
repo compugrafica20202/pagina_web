@@ -15,6 +15,12 @@ Instala nodejs, npm y deja selecciona la opción que lo añade al PATH.
 
 > npm run install-all
 
+### 4. Iniciar servidores
+
+Para correr de forma local y poder desarrollar, en la consola ejecuta:
+
+> npm run dev
+
 ## Sobre el repositorio:
 
 Cuenta con las carpetas client y server en las cuales está el desarrollo del frontend y backend, respectivamente. 

@@ -6,15 +6,11 @@ import FormularioProducto from "./FormularioProducto";
 import FormularioInfoPersonal from "./FormularioInfoPersonal";
 import * as Yup from "yup";
 import DialogoInfoCliente from "./DialogoInfoCliente";
+import { Redirect } from "react-router-dom";
 
 import imgInvTipo0 from "../../assets/invTipo0.jpg";
 import imgInvTipo1 from "../../assets/invTipo1.jpg";
-import { Redirect } from "react-router-dom";
-
-/* 
-TODO: 
-- Consultar límites en backend
-*/
+import imgCodornices from "../../assets/Codornices.jpg";
 
 const invTipo1Limits = {
   altura: { min: 50, max: 150 },
@@ -23,7 +19,7 @@ const invTipo1Limits = {
 };
 
 const invTipo2Limits = {
-  altura: { min: 150, max: 300 },
+  altura: { min: 151, max: 300 },
   ancho: { min: 150, max: 300 },
   profundidad: { min: 100, max: 300 },
 };
@@ -233,7 +229,7 @@ export const FormularioCotizacion = () => {
                   })()}
                 {formik.values.es_invernadero === false && (
                   <img
-                    src={imgInvTipo1}
+                    src={imgCodornices}
                     alt="Alimentadora de codornices"
                     style={{ width: "100%" }}
                   />
